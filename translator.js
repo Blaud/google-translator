@@ -123,7 +123,13 @@ module.exports = (from, to, text, callback) => {
       content += chunk;
     });
     response.on('end', () => {
-      content = eval(content);
+      let isValid = true;
+      try {
+        content = eval(content);
+      } catch (e) {
+        callback({ text: content, isCorrect: false });
+        isValid = false;
+      }
 
       var translated = {
         text: '',
@@ -227,7 +233,7 @@ module.exports = (from, to, text, callback) => {
           });
         }
       }
-      callback(translated);
+      if (isValid) callback(translated);
     });
   });
 };
