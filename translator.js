@@ -152,7 +152,7 @@ module.exports = (from, to, text, callback) => {
       } else {
         //translated.text = content[0][0][0];
         //now it works for larger content
-        content[0].pop();
+        if (content[0][content[0].length - 1][0] === null) content[0].pop();
         content[0].forEach(element => {
           translated.text += element[0];
         });
