@@ -117,6 +117,7 @@ module.exports = (from, to, text, callback) => {
       'Content-Type': 'application/json',
     },
   };
+  console.log(options.path);
   https.get(options, response => {
     var content = '';
     response.on('data', chunk => {
