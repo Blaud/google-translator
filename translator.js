@@ -104,7 +104,7 @@ module.exports = (from, to, text, callback) => {
     host: 'translate.google.com',
     port: 443,
     path:
-      '/translate_a/single?client=gtx&ie=UTF-8&oe=UTF-8' +
+      '/translate_a/single?client=webapp&ie=UTF-8&oe=UTF-8' +
       (detectlanguage ? '' : '&sl=' + from) +
       '&tl=' +
       to +
@@ -117,7 +117,6 @@ module.exports = (from, to, text, callback) => {
       'Content-Type': 'application/json',
     },
   };
-  console.log(options.path);
   https.get(options, response => {
     var content = '';
     response.on('data', chunk => {
