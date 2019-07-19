@@ -1,6 +1,6 @@
 ﻿'use strict';
-var https = require('https');
-var querystring = require('querystring');
+const https = require('https');
+const querystring = require('querystring');
 
 const Languages = {
   af: 'Afrikaans',
@@ -100,11 +100,12 @@ module.exports = (from, to, text, callback) => {
   }
 
   text = querystring.escape(text);
+
   var options = {
     host: 'translate.google.com',
     port: 443,
     path:
-      '/translate_a/single?client=webapp&ie=UTF-8&oe=UTF-8' +
+      '/translate_a/single?client=gtx&ie=UTF-8&oe=UTF-8' +
       (detectlanguage ? '' : '&sl=' + from) +
       '&tl=' +
       to +
@@ -112,9 +113,12 @@ module.exports = (from, to, text, callback) => {
       text +
       '&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&dt=at',
     headers: {
-      Accept: 'application/json;charset=utf-8',
+      Accept: '*/*',
       'Accept-Language': 'en-US,en;q=0.5',
       'Content-Type': 'application/json',
+      referer: 'https://translate.google.com/',
+      'user-agent':
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
     },
   };
   https.get(options, response => {

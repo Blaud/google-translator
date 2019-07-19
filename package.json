@@ -1,8 +1,11 @@
 {
   "name": "google-translator",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Google Translate API for Free",
   "main": "translator.js",
+  "scripts": {
+    "test": "node test"
+  },
   "keywords": [
     "google",
     "translator",
@@ -22,5 +25,6 @@
   "bugs": {
     "url": "https://github.com/731MY/google-translator/issues"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {}
 }
